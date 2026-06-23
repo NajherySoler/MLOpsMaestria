@@ -1,2 +1,4 @@
+
+
 Yurieth Najhery Soler Maldonado
-Laura Daniela MEdina
+Laura Daniela Medina Paipilla
