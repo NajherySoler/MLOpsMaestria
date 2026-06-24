@@ -4,7 +4,6 @@
 
 * Najhery Soler
 * Laura Medina
-* [Nombre del tercer integrante]
 
 ---
 
