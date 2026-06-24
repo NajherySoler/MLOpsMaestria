@@ -17,19 +17,18 @@ data = pd.DataFrame({
     "days_since_last_open": np.random.randint(0, 30, n),
     "segment": np.random.choice(["new", "active", "inactive"], n)
 })
- 
- 
+
 prob_open = (
-    0.6 * data["historical_open_rate"]
-    + 0.2 * (data["days_since_last_open"] < 10).astype(int)
-    + 0.1 * (data["segment"] == "active").astype(int)
-    + 0.1 * np.random.rand(n)
+    0.45 * data["historical_open_rate"]
+    + 0.15 * (data["days_since_last_open"] < 10).astype(int)
+    + 0.10 * (data["segment"] == "active").astype(int)
+    + 0.10 * (data["campaign_type"] == "promo").astype(int)
+    + 0.20 * np.random.rand(n)
 )
- 
-data["target_opened"] = (prob_open > 0.55).astype(int)
- 
+
+data["target_opened"] = np.random.binomial(1, prob_open.clip(0, 1))
+
 data.to_csv("data/raw/openrate_mock.csv", index=False)
- 
+
 print("Dataset mock generado en data/raw/openrate_mock.csv")
 print(data.head())
- 
